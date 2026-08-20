@@ -18,7 +18,11 @@ Sitio institucional armado, publicado en producción en `prhingenieria.com`, y c
 - `https://prhingenieria.com` responde 200 OK por HTTPS con certificado válido (verificado con curl).
 - `POST /api/contact` responde correctamente (probado con curl): devuelve el error esperado `"El formulario no está configurado todavía."` porque todavía faltan las variables de entorno — confirma que la función está deployada y andando, falta solo la config final.
 
+## Formulario de contacto — cerrado (2026-08-20)
+- Cliente cargó `GMAIL_USER` y `GMAIL_APP_PASSWORD` en Vercel (Production + Preview). Redeployado.
+- Al probar el flujo real en el navegador apareció un bug: `var status = document.getElementById('formStatus')` pisaba en silencio la global reservada `window.status` del navegador, así que `status.classList` quedaba `undefined` y el envío rompía apenas alguien mandaba el formulario (aunque `curl` directo a la API funcionaba bien — por eso no se detectó antes). Se renombró la variable a `formStatusEl`. Ver [index.html](index.html) sección `<script>` final.
+- Probado end-to-end en producción (`https://prhingenieria.com`, formulario real, no solo la API): el mail se manda, el mensaje de éxito aparece, el formulario se vacía solo, sin errores de consola.
+- **Pendiente de confirmar por el cliente:** que los dos emails de prueba ("Prueba Deploy" y "Geraldine (prueba final)") hayan llegado a la bandeja de `prh.ingenieria@gmail.com` (revisar spam también, es la primera vez que envía esta app).
+
 ## Pendiente
-- **Cargar las variables de entorno en Vercel** para que el formulario mande el mail de verdad: `GMAIL_USER` y `GMAIL_APP_PASSWORD`. Instrucciones completas en [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md#contacto). Después de cargarlas hace falta un redeploy (`vercel --prod --yes -Q "C:/Users/hertn/.vercel-prh" -S prh`) para que la función las tome.
 - Conectar GitHub↔Vercel para auto-deploy en cada push — requiere que el cliente autorice el OAuth desde el dashboard (vercel.com/prh/prh-ingenieria/settings/git). Hasta entonces el deploy es manual por CLI.
-- Probar el envío real del formulario de punta a punta una vez cargadas las credenciales.

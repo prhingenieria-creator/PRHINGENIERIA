@@ -40,7 +40,8 @@ Intenté conectar el repo al proyecto de Vercel vía CLI (`vercel git connect`) 
 - **Requiere dos variables de entorno en Vercel** (Project Settings → Environment Variables, en `vercel.com/prh/prh-ingenieria/settings/environment-variables`, Production + Preview):
   - `GMAIL_USER` = `prh.ingenieria@gmail.com`
   - `GMAIL_APP_PASSWORD` = una **contraseña de aplicación** de Google (no la contraseña normal de la cuenta) — se genera en myaccount.google.com/apppasswords, requiere tener la verificación en 2 pasos activada en esa cuenta de Gmail.
-  - **Estado (2026-08-20): todavía no están cargadas.** El endpoint ya funciona y responde bien, pero devuelve `"El formulario no está configurado todavía."` hasta que se agreguen esas dos variables y se haga un redeploy.
+  - **Estado (2026-08-20): cargadas y funcionando.** Probado end-to-end en producción con el formulario real — manda el mail, sin errores.
+- Ojo con este nombre de variable si se toca el script de nuevo: **no usar `status` como nombre de variable** en el `<script>` global — pisa en silencio `window.status` (propiedad reservada del navegador) y rompe `.classList`. Por eso la variable se llama `formStatusEl`.
 
 ## Identidad visual
 Concepto "plano técnico / blueprint de ingeniería": paleta ink-blue + acento "redline" (rojo de corrección de plano), tipografía IBM Plex (Sans Condensed para títulos, Sans para cuerpo, Mono para etiquetas técnicas), marcas de registro tipo plano en las esquinas, grilla de papel milimetrado de fondo. Soporta tema claro y oscuro (oscuro = cianotipo, fondo azul con líneas claras).
