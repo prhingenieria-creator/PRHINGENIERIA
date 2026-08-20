@@ -27,7 +27,9 @@
   "description": "Consultora de ingeniería industrial que ayuda a pymes a ordenar procesos, detectar pérdidas de tiempo y dinero, y mejorar la operación con tecnología y automatización.",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "España 991"
+    "streetAddress": "España 991",
+    "addressLocality": "Rosario",
+    "addressCountry": "AR"
   },
   "areaServed": "Argentina",
   "knowsAbout": ["Procesos industriales", "Organización de empresas", "Automatización", "Transformación digital para pymes", "Mejora continua"]
@@ -958,7 +960,7 @@
 
 <footer>
   <div class="wrap footer-row">
-    <span class="mono">© <span id="year"></span> PRH Ingeniería — prhingenieria.com · España 991</span>
+    <span class="mono">© <span id="year"></span> PRH Ingeniería — prhingenieria.com · España 991, Rosario, Argentina</span>
     <div class="footer-links">
       <a href="#que-hacemos">Qué hacemos</a>
       <a href="#como-trabajamos">Cómo trabajamos</a>
@@ -1024,7 +1026,7 @@
       .then(function(r){ return r.json().then(function(data){ return {ok: r.ok, data: data}; }); })
       .then(function(res){
         if (res.ok && res.data.ok){
-          formStatusEl.textContent = 'Listo — te vamos a responder por email a la brevedad.';
+          formStatusEl.textContent = 'Gracias por escribirnos. Nos pondremos en contacto en las próximas horas para coordinar el diagnóstico.';
           form.reset();
         } else {
           formStatusEl.textContent = (res.data && res.data.error) || 'No se pudo enviar. Probá de nuevo.';
