@@ -25,4 +25,4 @@ Sitio institucional armado, publicado en producción en `prhingenieria.com`, y c
 - **Pendiente de confirmar por el cliente:** que los dos emails de prueba ("Prueba Deploy" y "Geraldine (prueba final)") hayan llegado a la bandeja de `prh.ingenieria@gmail.com` (revisar spam también, es la primera vez que envía esta app).
 
 ## Pendiente
-- Conectar GitHub↔Vercel para auto-deploy en cada push — requiere que el cliente autorice el OAuth desde el dashboard (vercel.com/prh/prh-ingenieria/settings/git). Hasta entonces el deploy es manual por CLI.
+- (resuelto 2026-08-20) Conectar GitHub↔Vercel para auto-deploy en cada push — hecho desde vercel.com/prh/prh-ingenieria/settings/git. Detalle en [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md).
