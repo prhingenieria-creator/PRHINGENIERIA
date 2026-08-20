@@ -4,13 +4,14 @@
 Landing page institucional para PRH Ingeniería, consultora de ingeniería industrial (relevamiento de procesos, organización y gestión para pymes en crecimiento). Contenido base provisto por el cliente; redacción ajustada a voseo rioplatense y tono más directo, sin alterar el contenido sustantivo de los servicios.
 
 ## Stack
-Sitio estático de una sola página: `index.html` con CSS y JS inline, sin build ni dependencias externas (salvo Google Fonts). No requiere backend ni hosting con server-side rendering — se puede servir desde cualquier hosting estático (Vercel, Netlify, GitHub Pages, hosting tradicional, etc.).
+Sitio de una sola página: `index.html` con CSS y JS inline (sin build, sin dependencias externas salvo Google Fonts), más una función serverless en `api/contact.js` (Node.js, usa `nodemailer`) que envía el formulario de contacto por email. Requiere una plataforma que soporte funciones serverless tipo Vercel (no serviría un hosting puramente estático como GitHub Pages sin adaptar esa parte).
 
 ## Dominio y hosting
-El cliente compró **prhingenieria.com** (2026-08-19). Usado como `canonical` y en meta description.
+El cliente compró **prhingenieria.com** en **Arsys** (2026-08-19). Usado como `canonical` y en meta description.
 
-Deployado en Vercel (2026-08-20) bajo el team **prh** (vercel.com/prh), proyecto **prh-ingenieria**:
-- URL de producción actual: **https://prh-ingenieria-peach.vercel.app**
+Deployado en Vercel bajo el team **prh** (vercel.com/prh), proyecto **prh-ingenieria**:
+- **https://prhingenieria.com** — dominio conectado y andando (2026-08-20). DNS en Arsys: registro `A @ 76.76.21.21` y `A www 76.76.21.21` (se dejaron intactos el resto de los registros del dominio — MX, SPF, DKIM, autoconfig/autodiscover/webmail — porque son del servicio de correo `serviciodecorreo.es` que usa el cliente). Certificado SSL emitido manualmente con `vercel certs issue` porque no se auto-emitió al toque para el dominio raíz.
+- URL alternativa (siempre activa): https://prh-ingenieria-peach.vercel.app
 - Dashboard: https://vercel.com/prh/prh-ingenieria
 
 **Importante — perfil de auth separado:** este proyecto usa una cuenta de Vercel distinta a la de los otros proyectos (Duke Host, CRM Inmobiliario, que están bajo `gerihertner-hue` / `crm-inmobiliario3`). Para no pisar esa sesión, el login del team `prh` (email prh.ingenieria@gmail.com) se guardó en un directorio de config separado: `C:\Users\hertn\.vercel-prh`. Cualquier comando `vercel` sobre este proyecto necesita los flags:
@@ -33,12 +34,13 @@ Repo: **https://github.com/prhingenieria-creator/PRHINGENIERIA.git** (cuenta Git
 ### Pendiente — conectar GitHub a Vercel (requiere acción manual del dueño de la cuenta)
 Intenté conectar el repo al proyecto de Vercel vía CLI (`vercel git connect`) para que quede auto-deploy en cada push, pero Vercel exige que la cuenta (`prh.ingenieria@gmail.com`, team `prh`) tenga una "Login Connection" con GitHub — es un OAuth que solo se autoriza desde el dashboard web, no por CLI. Falta que el dueño de la cuenta entre a **vercel.com/prh/prh-ingenieria/settings/git**, logueado con `prh.ingenieria@gmail.com`, y conecte el repo `prhingenieria-creator/PRHINGENIERIA` ahí. Hasta que eso pase, el deploy sigue siendo manual por CLI (`vercel --prod --yes -Q "C:/Users/hertn/.vercel-prh" -S prh`), no automático por push.
 
-Pendiente también: conectar el dominio prhingenieria.com al proyecto de Vercel — falta saber en qué registrador está comprado para configurar el DNS (o transferir el dominio a Vercel Domains).
-
 ## Contacto
 - El sitio **no muestra** email ni teléfono en texto visible (decisión explícita del cliente: "solo formulario, sin datos visibles").
-- El formulario de contacto (`#contacto`) arma un `mailto:` al enviar, dirigido a **prh.ingenieria@gmail.com** (dato confirmado por el cliente). Esto abre el cliente de correo del visitante — no hay envío server-side.
-- Si en el futuro se quiere un envío real sin abrir el cliente de correo (ej. vía un servicio de formularios o backend propio), hay que reemplazar esa lógica en el `<script>` al final de `index.html`.
+- El formulario de contacto (`#contacto`) hace `POST /api/contact` con `fetch`. La función serverless (`api/contact.js`) manda el mail directo por Gmail SMTP (nodemailer) a **prh.ingenieria@gmail.com**, con `replyTo` seteado al email que puso la persona que escribe — así se puede responder directo desde el mail recibido. Incluye un honeypot (`sitio_web`) para filtrar bots.
+- **Requiere dos variables de entorno en Vercel** (Project Settings → Environment Variables, en `vercel.com/prh/prh-ingenieria/settings/environment-variables`, Production + Preview):
+  - `GMAIL_USER` = `prh.ingenieria@gmail.com`
+  - `GMAIL_APP_PASSWORD` = una **contraseña de aplicación** de Google (no la contraseña normal de la cuenta) — se genera en myaccount.google.com/apppasswords, requiere tener la verificación en 2 pasos activada en esa cuenta de Gmail.
+  - **Estado (2026-08-20): todavía no están cargadas.** El endpoint ya funciona y responde bien, pero devuelve `"El formulario no está configurado todavía."` hasta que se agreguen esas dos variables y se haga un redeploy.
 
 ## Identidad visual
 Concepto "plano técnico / blueprint de ingeniería": paleta ink-blue + acento "redline" (rojo de corrección de plano), tipografía IBM Plex (Sans Condensed para títulos, Sans para cuerpo, Mono para etiquetas técnicas), marcas de registro tipo plano en las esquinas, grilla de papel milimetrado de fondo. Soporta tema claro y oscuro (oscuro = cianotipo, fondo azul con líneas claras).

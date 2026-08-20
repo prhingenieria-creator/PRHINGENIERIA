@@ -1,31 +1,24 @@
 # Estado de tareas — PRH Ingeniería
 
 ## Última tarea
-Armar el sitio institucional completo (una sola página) a partir del contenido provisto por el cliente, con ajustes de redacción y diseño propio. Luego, a pedido del cliente, se sacó la sección "Quiénes somos" antes de publicar.
+Sitio institucional armado, publicado en producción en `prhingenieria.com`, y con el formulario de contacto mandando el mail real (sin depender de `mailto:`).
 
 ## Hecho
 - Redacción revisada de todas las secciones (voseo, tono más directo), sin cambiar el contenido sustantivo de los 11 servicios.
-- Diseño e implementación completa de `index.html` (blueprint técnico, tema claro/oscuro, responsive).
-- Secciones: header/nav, hero, equipo (3 personas), "¿te pasa esto?" (5 señales), cómo trabajamos (5 pasos), qué hacemos (11 servicios + tarjeta de cierre "a medida"), contacto (formulario → mailto), footer.
-- 2026-08-20: se eliminó la sección "Quiénes somos" (contenido, link de nav en header/footer y el CSS que solo usaba esa sección) a pedido del cliente, antes de publicar el sitio.
-- 2026-08-20: se eliminó la sección "Equipo" completa (nombres, roles y descripciones de las 3 personas), su link de nav y el CSS que solo usaba esa sección — el cliente no quiere que aparezcan nombres del equipo en el sitio. Se ajustó también la frase de credencial del hero: "Ingenieros industriales, no una agencia de software" → "Somos ingenieros industriales."
-- Formulario de contacto conectado por `mailto:` a prh.ingenieria@gmail.com (dato confirmado por el cliente el 2026-08-19; no se muestra en texto visible del sitio).
-- Meta tags con dominio `prhingenieria.com` (comprado por el cliente el 2026-08-19).
+- Diseño e implementación de `index.html` (concepto "blueprint técnico", tema claro/oscuro, responsive).
+- A pedido del cliente (2026-08-20): se sacaron las secciones "Quiénes somos" y "Equipo" completas (sin nombres del equipo en el sitio), y se ajustó la frase de credencial del hero a "Somos ingenieros industriales."
+- Deploy a producción en Vercel, team **prh**: **https://prhingenieria.com**. Detalle del setup (cuentas separadas de Vercel/GitHub, comandos de deploy) en [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md).
+- Dominio prhingenieria.com (comprado en Arsys) conectado por DNS, con SSL activo.
+- Repo Git conectado y con push: https://github.com/prhingenieria-creator/PRHINGENIERIA.git
+- Formulario de contacto (2026-08-20): pasó de `mailto:` a un envío real server-side vía `api/contact.js` (función serverless de Vercel, nodemailer + Gmail SMTP), con honeypot antispam.
 
 ## Validaciones ejecutadas
-- Revisión visual en navegador (desktop ~1280px y mobile 375px): layout, tipografía, jerarquía correctos.
-- Se detectó y corrigió un bug de scroll horizontal (el menú móvil, al estar oculto vía `transform`, agrandaba el `scrollWidth` del documento) — solucionado con `overflow-x:hidden` en `body`.
-- Se detectó y corrigió una celda vacía en la grilla de servicios (11 ítems en grilla de 3 columnas dejaba un hueco) — se agregó una 12ª tarjeta de cierre con CTA a contacto.
-- Menú móvil (hamburguesa) probado funcionalmente vía JS — abre/cierra correctamente.
-- Formulario probado: genera un `mailto:` bien formado con asunto y cuerpo codificados.
-- Sin errores en consola del navegador.
+- Revisión visual en navegador (desktop y mobile): layout, tipografía, jerarquía, menú móvil, sin errores de consola.
+- Se corrigió un bug de scroll horizontal y una celda vacía en la grilla de servicios (ver commits para detalle).
+- `https://prhingenieria.com` responde 200 OK por HTTPS con certificado válido (verificado con curl).
+- `POST /api/contact` responde correctamente (probado con curl): devuelve el error esperado `"El formulario no está configurado todavía."` porque todavía faltan las variables de entorno — confirma que la función está deployada y andando, falta solo la config final.
 
-## Pendiente / fuera de alcance de esta tarea
-- 2026-08-20: primer deploy a producción salió por error en la cuenta equivocada (`gerihertner-hue` / team `crm-inmobiliario3`) — URL `prh-ingenieria-omega.vercel.app`. El cliente aclaró que PRH Ingeniería tiene su propio team en Vercel (`vercel.com/prh`) y su propio Git separado.
-- 2026-08-20: logueado en un perfil de Vercel separado (config dir `C:\Users\hertn\.vercel-prh`) con el email prh.ingenieria@gmail.com, con acceso al team `prh`. Redeployado ahí correctamente: **https://prh-ingenieria-peach.vercel.app** (proyecto `prh/prh-ingenieria`). Verificado en el navegador: carga bien, sin errores de consola, contenido actualizado.
-- 2026-08-20: eliminado el proyecto viejo `crm-inmobiliario3/prh-ingenieria` (confirmado por el cliente).
-- 2026-08-20: repo Git conectado — https://github.com/prhingenieria-creator/PRHINGENIERIA.git. Login de `gh` con esa cuenta (device code, autorizado por el cliente en el navegador), primer commit + push a `main` hecho con éxito.
-- 2026-08-20: intenté conectar el repo al proyecto de Vercel para auto-deploy (`vercel git connect`) — falló porque la cuenta de Vercel del team `prh` no tiene todavía una "Login Connection" con GitHub; eso requiere que el cliente lo autorice manualmente desde vercel.com/prh/prh-ingenieria/settings/git. Hasta entonces, el deploy sigue siendo manual por CLI.
-- Falta conectar el dominio prhingenieria.com a este deploy — necesito saber en qué registrador está comprado para guiar la configuración de DNS.
-- No hay imágenes/fotos reales; los "avatares" del equipo son iniciales en un marco geométrico (decisión deliberada, no fabricar fotos de personas reales).
-- No se probó el `mailto:` end-to-end abriendo un cliente de correo real (no es posible desde este entorno); se validó que la URL generada es correcta.
+## Pendiente
+- **Cargar las variables de entorno en Vercel** para que el formulario mande el mail de verdad: `GMAIL_USER` y `GMAIL_APP_PASSWORD`. Instrucciones completas en [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md#contacto). Después de cargarlas hace falta un redeploy (`vercel --prod --yes -Q "C:/Users/hertn/.vercel-prh" -S prh`) para que la función las tome.
+- Conectar GitHub↔Vercel para auto-deploy en cada push — requiere que el cliente autorice el OAuth desde el dashboard (vercel.com/prh/prh-ingenieria/settings/git). Hasta entonces el deploy es manual por CLI.
+- Probar el envío real del formulario de punta a punta una vez cargadas las credenciales.
