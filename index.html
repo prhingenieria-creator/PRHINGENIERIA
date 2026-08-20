@@ -912,14 +912,16 @@
   }
 
   // Contact form -> POST a /api/contact (envía el mail server-side)
+  // Ojo: "status" es una global reservada del navegador (window.status), por eso
+  // esta variable se llama formStatusEl y no "status" — si no, se pisa en silencio.
   var form = document.getElementById('contactForm');
-  var status = document.getElementById('formStatus');
+  var formStatusEl = document.getElementById('formStatus');
   var submitBtn = document.getElementById('formSubmit');
   form.addEventListener('submit', function(e){
     e.preventDefault();
     submitBtn.disabled = true;
-    status.textContent = 'Enviando…';
-    status.classList.add('show');
+    formStatusEl.textContent = 'Enviando…';
+    formStatusEl.classList.add('show');
 
     var payload = {
       nombre: form.nombre.value.trim(),
@@ -937,14 +939,14 @@
       .then(function(r){ return r.json().then(function(data){ return {ok: r.ok, data: data}; }); })
       .then(function(res){
         if (res.ok && res.data.ok){
-          status.textContent = 'Listo — te vamos a responder por email a la brevedad.';
+          formStatusEl.textContent = 'Listo — te vamos a responder por email a la brevedad.';
           form.reset();
         } else {
-          status.textContent = (res.data && res.data.error) || 'No se pudo enviar. Probá de nuevo.';
+          formStatusEl.textContent = (res.data && res.data.error) || 'No se pudo enviar. Probá de nuevo.';
         }
       })
       .catch(function(){
-        status.textContent = 'No se pudo enviar. Revisá tu conexión y probá de nuevo.';
+        formStatusEl.textContent = 'No se pudo enviar. Revisá tu conexión y probá de nuevo.';
       })
       .finally(function(){
         submitBtn.disabled = false;
