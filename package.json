@@ -1,0 +1,9 @@
+{
+  "name": "prh-ingenieria",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Sitio institucional de PRH Ingeniería",
+  "dependencies": {
+    "nodemailer": "^6.9.14"
+  }
+}

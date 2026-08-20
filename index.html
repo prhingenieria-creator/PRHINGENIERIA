@@ -857,10 +857,14 @@
           <label for="f-mensaje">Contanos brevemente tu situación</label>
           <textarea id="f-mensaje" name="mensaje" required></textarea>
         </div>
+        <div class="field" aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;">
+          <label for="f-sitio-web">No completar</label>
+          <input id="f-sitio-web" name="sitio_web" type="text" tabindex="-1" autocomplete="off">
+        </div>
         <div class="form-foot">
-          <button type="submit" class="btn">Enviar consulta</button>
-          <span class="form-note">Se abre tu programa de correo para enviarla.</span>
-          <span class="form-status mono" id="formStatus">Listo — revisá tu cliente de correo.</span>
+          <button type="submit" class="btn" id="formSubmit">Enviar consulta</button>
+          <span class="form-note">Te respondemos a la brevedad.</span>
+          <span class="form-status mono" id="formStatus"></span>
         </div>
       </form>
     </div>
@@ -907,22 +911,44 @@
     document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
   }
 
-  // Contact form -> mailto
+  // Contact form -> POST a /api/contact (envía el mail server-side)
   var form = document.getElementById('contactForm');
   var status = document.getElementById('formStatus');
+  var submitBtn = document.getElementById('formSubmit');
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    var nombre = form.nombre.value.trim();
-    var empresa = form.empresa.value.trim();
-    var email = form.email.value.trim();
-    var mensaje = form.mensaje.value.trim();
-    var subject = 'Consulta desde prhingenieria.com — ' + empresa;
-    var body = 'Nombre: ' + nombre + '\nEmpresa: ' + empresa + '\nEmail: ' + email + '\n\n' + mensaje;
-    var mailto = 'mailto:prh.ingenieria@gmail.com'
-      + '?subject=' + encodeURIComponent(subject)
-      + '&body=' + encodeURIComponent(body);
-    window.location.href = mailto;
+    submitBtn.disabled = true;
+    status.textContent = 'Enviando…';
     status.classList.add('show');
+
+    var payload = {
+      nombre: form.nombre.value.trim(),
+      empresa: form.empresa.value.trim(),
+      email: form.email.value.trim(),
+      mensaje: form.mensaje.value.trim(),
+      sitio_web: form.sitio_web.value
+    };
+
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payload)
+    })
+      .then(function(r){ return r.json().then(function(data){ return {ok: r.ok, data: data}; }); })
+      .then(function(res){
+        if (res.ok && res.data.ok){
+          status.textContent = 'Listo — te vamos a responder por email a la brevedad.';
+          form.reset();
+        } else {
+          status.textContent = (res.data && res.data.error) || 'No se pudo enviar. Probá de nuevo.';
+        }
+      })
+      .catch(function(){
+        status.textContent = 'No se pudo enviar. Revisá tu conexión y probá de nuevo.';
+      })
+      .finally(function(){
+        submitBtn.disabled = false;
+      });
   });
 </script>
 
