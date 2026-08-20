@@ -33,7 +33,9 @@ Repo: **https://github.com/prhingenieria-creator/PRHINGENIERIA.git** (cuenta Git
 - **Mac de Maru (2026-08-20):** máquina nueva sin `gh`/`node`/`vercel` instalados. En vez de instalar herramientas, se generó una clave SSH dedicada (`~/.ssh/id_ed25519_prhingenieria`) y se agregó a la cuenta GitHub `prhingenieria-creator` (github.com/settings/keys). El remoto del repo en esta máquina usa SSH (`git@github.com:prhingenieria-creator/PRHINGENIERIA.git`) en vez de HTTPS. Push verificado y funcionando.
 
 ### GitHub↔Vercel conectado (2026-08-20) — auto-deploy activo
-Ya no hace falta deployar a mano por CLI: se conectó el repo desde **vercel.com/prh/prh-ingenieria/settings/git**, logueado con `prh.ingenieria@gmail.com`. Cada `git push` a `main` dispara un deploy automático a producción. El comando manual (`vercel --prod --yes -S prh`, requiere el CLI de Vercel instalado) queda solo como respaldo si el auto-deploy fallara.
+Ya no hace falta deployar a mano por CLI: se conectó el repo desde **vercel.com/prh/prh-ingenieria/settings/git**, logueado con `prh.ingenieria@gmail.com` (instalando la GitHub App de Vercel, con acceso limitado solo al repo `PRHINGENIERIA`). Cada `git push` a `main` dispara un deploy automático a producción. El comando manual (`vercel --prod --yes -S prh`, requiere el CLI de Vercel instalado) queda solo como respaldo si el auto-deploy fallara.
+
+Verificado con un push de prueba (commit de este mismo cambio) que apareció como deployment automático en Vercel sin correr ningún comando de deploy manual.
 
 ## Contacto
 - El sitio **no muestra** email ni teléfono en texto visible (decisión explícita del cliente: "solo formulario, sin datos visibles").
