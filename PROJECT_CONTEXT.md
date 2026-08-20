@@ -21,10 +21,19 @@ Sin esos flags, el CLI usa la sesión default (`gerihertner-hue`) y falla o depl
 
 Deploy: `vercel --prod --yes -Q "C:/Users/hertn/.vercel-prh" -S prh` desde la carpeta `prh-ingenieria/` (sitio estático, sin build step).
 
-### Deploy fallido en cuenta equivocada (para referencia)
-El primer deploy (2026-08-20) se hizo sin saber que existía un team separado para PRH, y quedó publicado por error en la cuenta `gerihertner-hue` / team `crm-inmobiliario3`, proyecto `prh-ingenieria`, URL `prh-ingenieria-omega.vercel.app`. Se corrigió deployando de nuevo bajo el team `prh` correcto. **Ese proyecto viejo en la cuenta equivocada sigue existiendo** — no se borró, queda pendiente decidir si el cliente lo quiere eliminar desde vercel.com/crm-inmobiliario3.
+### Deploy fallido en cuenta equivocada (para referencia, ya resuelto)
+El primer deploy (2026-08-20) se hizo sin saber que existía un team separado para PRH, y quedó publicado por error en la cuenta `gerihertner-hue` / team `crm-inmobiliario3`. Se corrigió deployando bajo el team `prh` correcto, y el proyecto viejo (`crm-inmobiliario3/prh-ingenieria`) se eliminó (2026-08-20).
 
-Pendiente: conectar el dominio prhingenieria.com al proyecto de Vercel — falta saber en qué registrador está comprado para configurar el DNS (o transferir el dominio a Vercel Domains).
+## Git / control de versiones
+Repo: **https://github.com/prhingenieria-creator/PRHINGENIERIA.git** (cuenta GitHub separada, `prhingenieria-creator`, dedicada a PRH — igual que el team de Vercel).
+
+- `gh` en esta máquina también tiene esa cuenta agregada (además de `gerihertner-hue` y `crmverduleria-marta`). La cuenta **activa por default quedó en `prhingenieria-creator`** después de este trabajo (se corrió `gh auth switch --user prhingenieria-creator`) — si se vuelve a trabajar en otro proyecto (Duke Host, CRM Inmobiliario) y hay que pushear ahí, hay que `gh auth switch --user gerihertner-hue` primero, o especificar el usuario con `-u`.
+- Primer commit y push (2026-08-20): sitio completo (`index.html`, `PROJECT_CONTEXT.md`, `TASK_STATE.md`, `.gitignore`), rama `main`.
+
+### Pendiente — conectar GitHub a Vercel (requiere acción manual del dueño de la cuenta)
+Intenté conectar el repo al proyecto de Vercel vía CLI (`vercel git connect`) para que quede auto-deploy en cada push, pero Vercel exige que la cuenta (`prh.ingenieria@gmail.com`, team `prh`) tenga una "Login Connection" con GitHub — es un OAuth que solo se autoriza desde el dashboard web, no por CLI. Falta que el dueño de la cuenta entre a **vercel.com/prh/prh-ingenieria/settings/git**, logueado con `prh.ingenieria@gmail.com`, y conecte el repo `prhingenieria-creator/PRHINGENIERIA` ahí. Hasta que eso pase, el deploy sigue siendo manual por CLI (`vercel --prod --yes -Q "C:/Users/hertn/.vercel-prh" -S prh`), no automático por push.
+
+Pendiente también: conectar el dominio prhingenieria.com al proyecto de Vercel — falta saber en qué registrador está comprado para configurar el DNS (o transferir el dominio a Vercel Domains).
 
 ## Contacto
 - El sitio **no muestra** email ni teléfono en texto visible (decisión explícita del cliente: "solo formulario, sin datos visibles").

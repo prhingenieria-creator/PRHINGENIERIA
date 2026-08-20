@@ -23,8 +23,9 @@ Armar el sitio institucional completo (una sola página) a partir del contenido 
 ## Pendiente / fuera de alcance de esta tarea
 - 2026-08-20: primer deploy a producción salió por error en la cuenta equivocada (`gerihertner-hue` / team `crm-inmobiliario3`) — URL `prh-ingenieria-omega.vercel.app`. El cliente aclaró que PRH Ingeniería tiene su propio team en Vercel (`vercel.com/prh`) y su propio Git separado.
 - 2026-08-20: logueado en un perfil de Vercel separado (config dir `C:\Users\hertn\.vercel-prh`) con el email prh.ingenieria@gmail.com, con acceso al team `prh`. Redeployado ahí correctamente: **https://prh-ingenieria-peach.vercel.app** (proyecto `prh/prh-ingenieria`). Verificado en el navegador: carga bien, sin errores de consola, contenido actualizado.
-- Queda el proyecto viejo en la cuenta equivocada (`crm-inmobiliario3/prh-ingenieria`) sin borrar — pendiente de que el cliente confirme si lo quiere eliminar.
+- 2026-08-20: eliminado el proyecto viejo `crm-inmobiliario3/prh-ingenieria` (confirmado por el cliente).
+- 2026-08-20: repo Git conectado — https://github.com/prhingenieria-creator/PRHINGENIERIA.git. Login de `gh` con esa cuenta (device code, autorizado por el cliente en el navegador), primer commit + push a `main` hecho con éxito.
+- 2026-08-20: intenté conectar el repo al proyecto de Vercel para auto-deploy (`vercel git connect`) — falló porque la cuenta de Vercel del team `prh` no tiene todavía una "Login Connection" con GitHub; eso requiere que el cliente lo autorice manualmente desde vercel.com/prh/prh-ingenieria/settings/git. Hasta entonces, el deploy sigue siendo manual por CLI.
 - Falta conectar el dominio prhingenieria.com a este deploy — necesito saber en qué registrador está comprado para guiar la configuración de DNS.
-- El cliente mencionó tener "otro git" separado para todo lo de PRH Ingeniería — no se usó todavía; el deploy actual se hizo directo por CLI (`vercel --prod`), sin repo conectado.
 - No hay imágenes/fotos reales; los "avatares" del equipo son iniciales en un marco geométrico (decisión deliberada, no fabricar fotos de personas reales).
 - No se probó el `mailto:` end-to-end abriendo un cliente de correo real (no es posible desde este entorno); se validó que la URL generada es correcta.
