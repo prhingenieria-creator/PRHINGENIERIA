@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PRH Ingeniería</title>
-<meta name="description" content="Ingenieros industriales que relevan cómo funciona tu pyme, encuentran dónde se pierde tiempo y dinero, y ordenan el trabajo para que crezca sin depender de la memoria de nadie.">
+<meta name="description" content="Ayudamos a pymes a ordenar su operación, reducir pérdidas de tiempo y dinero, y mejorar con procesos, tecnología y automatización. Ingenieros industriales — no una agencia de software.">
 <link rel="canonical" href="https://prhingenieria.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,7 +60,7 @@
   }
 
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; overflow-x:hidden;}
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
@@ -192,7 +192,6 @@
     text-transform:uppercase;
     color:var(--ink);
   }
-  .brand-word span{color:var(--muted); font-weight:600;}
 
   nav.primary{
     display:flex;
@@ -357,18 +356,15 @@
     max-width:46ch;
     font-size:1rem;
   }
-
-  .team-role{
-    font-family:"IBM Plex Mono", monospace;
-    font-size:0.7rem;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    color:var(--accent);
-    margin-top:6px;
-    display:block;
+  .section-intro{
+    color:var(--muted);
+    max-width:70ch;
+    font-size:1.02rem;
+    margin:-20px 0 44px;
   }
+  .section-intro strong{ color:var(--ink); font-weight:600; }
 
-  /* ---------- Pain points ---------- */
+  /* ---------- Pain / cost checklists (reused for "¿te pasa esto?" y "lo que cuesta") ---------- */
   .pain-shell{
     display:grid;
     grid-template-columns:0.7fr 1.3fr;
@@ -404,6 +400,58 @@
     color:var(--muted);
   }
   .pain-close strong{color:var(--ink);}
+
+  /* ---------- Tags ("¿para quién es?") ---------- */
+  .tag-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .tag{
+    border:1px solid var(--line-soft);
+    background:var(--surface);
+    padding:11px 16px;
+    font-size:0.95rem;
+    color:var(--ink);
+  }
+
+  /* ---------- Solutions ("qué hacemos") ---------- */
+  .solution-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:var(--line-soft);
+    border:1px solid var(--line-soft);
+  }
+  @media (max-width:780px){ .solution-grid{grid-template-columns:1fr;} }
+  .solution-card{
+    background:var(--surface);
+    padding:36px 32px;
+  }
+  .solution-icon{
+    width:36px;height:36px;
+    color:var(--line);
+  }
+  .solution-card h3{
+    font-size:1.2rem;
+    margin-top:18px;
+    text-transform:none;
+  }
+  .solution-desc{
+    margin-top:12px;
+    color:var(--muted);
+    font-size:0.96rem;
+  }
+  .solution-includes{
+    margin-top:18px;
+    padding-top:16px;
+    border-top:1px solid var(--line-soft);
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.76rem;
+    letter-spacing:0.01em;
+    color:var(--muted);
+    line-height:1.7;
+  }
 
   /* ---------- Process ---------- */
   .process-row{
@@ -454,49 +502,69 @@
     font-size:0.94rem;
   }
 
-  /* ---------- Services ---------- */
-  .services-grid{
+  /* ---------- Compare (antes / después) ---------- */
+  .compare-grid{
     display:grid;
-    grid-template-columns:repeat(3, 1fr);
+    grid-template-columns:1fr 1fr;
+    border:1px solid var(--line-soft);
+  }
+  @media (max-width:780px){ .compare-grid{grid-template-columns:1fr;} }
+  .compare-col{
+    background:var(--surface);
+    padding:32px;
+  }
+  .compare-col--after{ border-left:1px solid var(--line-soft); }
+  @media (max-width:780px){ .compare-col--after{ border-left:none; border-top:1px solid var(--line-soft);} }
+  .compare-label{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+  }
+  .compare-col--before .compare-label{ color:var(--muted); }
+  .compare-col--after .compare-label{ color:var(--accent); }
+  .compare-list{ margin-top:22px; }
+  .compare-list li{
+    padding:11px 0;
+    border-bottom:1px solid var(--line-soft);
+    font-size:0.98rem;
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+  }
+  .compare-list li:last-child{ border-bottom:none; }
+  .compare-col--before .compare-list li{ color:var(--muted); }
+  .compare-mark{ flex:none; margin-top:7px; width:7px; height:7px; }
+  .compare-col--before .compare-mark{ background:var(--line-soft); }
+  .compare-col--after .compare-mark{ background:var(--accent); }
+
+  /* ---------- Why PRH ---------- */
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
     gap:1px;
     background:var(--line-soft);
     border:1px solid var(--line-soft);
   }
-  @media (max-width:980px){ .services-grid{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:640px){ .services-grid{grid-template-columns:1fr;} }
-  .service-card{
+  @media (max-width:780px){ .why-grid{grid-template-columns:1fr;} }
+  .why-card{
     background:var(--surface);
-    padding:28px 24px;
+    padding:32px;
   }
-  .service-icon{
-    width:34px;height:34px;
-    color:var(--line);
-  }
-  .service-card h3{
-    font-size:1rem;
-    text-transform:none;
-    margin-top:16px;
-  }
-  .service-card p{
-    margin-top:10px;
-    font-size:0.92rem;
+  .why-no{
     color:var(--muted);
+    font-size:0.94rem;
   }
-  .service-card--cta{
-    background:var(--surface-alt);
-    display:flex;
-    flex-direction:column;
+  .why-yes{
+    margin-top:14px;
+    padding-top:14px;
+    border-top:1.5px solid var(--accent);
+    color:var(--ink);
+    font-weight:600;
+    font-size:1.08rem;
+    font-family:"IBM Plex Sans Condensed", sans-serif;
+    text-transform:none;
   }
-  .service-card--cta h3{ margin-top:2px; }
-  .service-cta-link{
-    margin-top:auto;
-    padding-top:16px;
-    font-family:"IBM Plex Mono", monospace;
-    font-size:0.82rem;
-    color:var(--accent);
-    text-decoration:none;
-  }
-  .service-cta-link:hover{ text-decoration:underline; }
 
   /* ---------- Contact ---------- */
   .contact-shell{
@@ -511,12 +579,12 @@
     margin-top:16px;
   }
   .contact-copy .lede-strong{
-    font-size:1.3rem;
+    font-size:1.5rem;
     font-family:"IBM Plex Sans Condensed", sans-serif;
     font-weight:600;
     color:var(--ink);
     text-transform:uppercase;
-    max-width:20ch;
+    max-width:16ch;
   }
   form.contact-form{
     border:1px solid var(--line-soft);
@@ -611,9 +679,10 @@
       <span class="brand-word">Ingeniería</span>
     </a>
     <nav class="primary" id="primaryNav">
-      <a href="#diagnostico">Diagnóstico</a>
+      <a href="#diagnostico">¿Te pasa esto?</a>
+      <a href="#que-hacemos">Qué hacemos</a>
       <a href="#como-trabajamos">Cómo trabajamos</a>
-      <a href="#que-hacemos">Servicios</a>
+      <a href="#por-que">Por qué PRH</a>
       <a href="#contacto" class="btn header-cta" style="margin-left:8px;">Solicitar diagnóstico</a>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="primaryNav">
@@ -628,11 +697,11 @@
   <section class="hero grid-bg">
     <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow">PRH Ingeniería — Consultoría en procesos industriales</p>
-        <h1 class="reveal">Tu empresa,<br>con los <em>planos</em> a la vista.</h1>
-        <p class="lede reveal">Somos ingenieros industriales. Relevamos cómo funciona tu pyme, encontramos dónde se pierde tiempo y dinero, y ordenamos el trabajo para que crezca sin depender de la memoria de nadie.</p>
+        <p class="eyebrow">PRH Ingeniería — Procesos, tecnología y automatización para pymes</p>
+        <h1 class="reveal">Tu empresa creció.<br>¿Pero tu <em>forma de trabajar</em> también?</h1>
+        <p class="lede reveal">Ayudamos a pymes a ordenar sus procesos, reducir pérdidas de tiempo y dinero, y trabajar de forma más eficiente. Analizamos cómo funciona hoy tu empresa, detectamos qué está frenando el negocio, y te ayudamos a implementar mejoras concretas.</p>
         <div class="hero-actions reveal">
-          <a href="#contacto" class="btn">Solicitar un diagnóstico</a>
+          <a href="#contacto" class="btn">Quiero analizar mi empresa</a>
           <a href="#que-hacemos" class="btn btn-ghost">Ver qué hacemos</a>
         </div>
         <p class="hero-credential reveal"><strong>Somos ingenieros industriales.</strong> Entendemos cómo funciona una empresa por dentro antes de proponer cualquier cambio.</p>
@@ -669,165 +738,262 @@
     </div>
   </section>
 
-  <!-- TE PASA ESTO -->
+  <!-- TE PASA ESTO (identificación) -->
   <section id="diagnostico">
     <div class="wrap pain-shell">
       <div class="reveal">
         <p class="eyebrow">¿Te pasa esto?</p>
         <h2 style="margin-top:10px;">Señales de una pyme que creció más rápido que su organización.</h2>
-        <p class="pain-close">¿Te reconociste en alguna? <strong>No sos el único caso</strong> — es lo más habitual en una pyme que crece rápido.</p>
+        <p class="pain-close">¿Te reconociste en alguna? Probablemente no necesitás trabajar más. <strong>Necesitás trabajar mejor.</strong></p>
       </div>
       <ul class="pain-list reveal">
         <li class="pain-item">
           <span class="pain-check" aria-hidden="true"></span>
-          <p>Las ventas crecen, pero la organización no acompaña el ritmo — y ya se empieza a notar.</p>
+          <p>Tu equipo está ocupado todo el día, pero no sabés exactamente en qué se va el tiempo.</p>
         </li>
         <li class="pain-item">
           <span class="pain-check" aria-hidden="true"></span>
-          <p>No está claro qué hace cada persona del equipo: si alguien falta, nadie sabe bien cómo seguir.</p>
+          <p>Hay tareas que solo sabe hacer una persona.</p>
         </li>
         <li class="pain-item">
           <span class="pain-check" aria-hidden="true"></span>
-          <p>No saben con precisión dónde pierden tiempo o dinero. Lo intuyen, pero no lo pueden señalar.</p>
+          <p>Cuando esa persona falta, el proceso se frena.</p>
         </li>
         <li class="pain-item">
           <span class="pain-check" aria-hidden="true"></span>
-          <p>Todo vive en planillas de Excel sueltas, una por persona, que nadie llega a cruzar.</p>
+          <p>Tenés información repartida entre Excel, WhatsApp, mails y sistemas sueltos.</p>
         </li>
         <li class="pain-item">
           <span class="pain-check" aria-hidden="true"></span>
-          <p>Las decisiones dependen de la memoria de dos o tres personas, no de un proceso definido.</p>
+          <p>Dos personas hacen parte de la misma tarea sin saberlo.</p>
+        </li>
+        <li class="pain-item">
+          <span class="pain-check" aria-hidden="true"></span>
+          <p>Los mismos problemas aparecen una y otra vez, pero nadie encuentra la causa.</p>
+        </li>
+        <li class="pain-item">
+          <span class="pain-check" aria-hidden="true"></span>
+          <p>Tenés que estar encima de todo para que las cosas pasen.</p>
+        </li>
+        <li class="pain-item">
+          <span class="pain-check" aria-hidden="true"></span>
+          <p>Querés crecer, pero sentís que primero necesitás ordenar la empresa.</p>
         </li>
       </ul>
     </div>
   </section>
 
+  <!-- LO QUE NO VES TAMBIÉN CUESTA (consecuencia) -->
+  <section class="alt" id="costo">
+    <div class="wrap pain-shell">
+      <div class="reveal">
+        <p class="eyebrow">El costo oculto</p>
+        <h2 style="margin-top:10px;">Lo que no ves también cuesta.</h2>
+        <p class="pain-close">Pequeñas ineficiencias repetidas todos los días pueden convertirse en grandes costos. Nosotros buscamos encontrarlas, medirlas, y <strong>priorizar cuáles vale la pena solucionar.</strong></p>
+      </div>
+      <ul class="pain-list reveal">
+        <li class="pain-item">
+          <span class="pain-check" aria-hidden="true"></span>
+          <p>Una tarea que lleva veinte minutos más de lo necesario.</p>
+        </li>
+        <li class="pain-item">
+          <span class="pain-check" aria-hidden="true"></span>
+          <p>Un proceso que requiere tres personas cuando podría requerir una.</p>
+        </li>
+        <li class="pain-item">
+          <span class="pain-check" aria-hidden="true"></span>
+          <p>Una compra mal gestionada.</p>
+        </li>
+        <li class="pain-item">
+          <span class="pain-check" aria-hidden="true"></span>
+          <p>Un error que obliga a rehacer un trabajo.</p>
+        </li>
+        <li class="pain-item">
+          <span class="pain-check" aria-hidden="true"></span>
+          <p>Una persona que concentra información crítica.</p>
+        </li>
+        <li class="pain-item">
+          <span class="pain-check" aria-hidden="true"></span>
+          <p>Un Excel que nadie actualiza.</p>
+        </li>
+        <li class="pain-item">
+          <span class="pain-check" aria-hidden="true"></span>
+          <p>Una demora que termina afectando al cliente.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PARA QUIÉN ES -->
+  <section id="para-quien">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow reveal">¿Para quién es esto?</p>
+          <h2 class="reveal">Trabajamos con empresas que…</h2>
+        </div>
+      </div>
+      <ul class="tag-grid reveal">
+        <li class="tag">Están creciendo y necesitan ordenar su estructura</li>
+        <li class="tag">Dependen demasiado de personas puntuales</li>
+        <li class="tag">Tienen procesos que crecieron "sobre la marcha"</li>
+        <li class="tag">Sienten mucho trabajo y poca eficiencia</li>
+        <li class="tag">Quieren digitalizar o automatizar, pero no saben por dónde empezar</li>
+        <li class="tag">Necesitan información confiable para decidir</li>
+        <li class="tag">Quieren profesionalizar la operación sin sumar complejidad</li>
+      </ul>
+      <p class="pain-close reveal">No importa si hoy tenés 10, 50 o 200 personas. El punto de partida es el mismo: <strong>entender cómo funciona tu empresa hoy.</strong></p>
+    </div>
+  </section>
+
+  <!-- QUÉ HACEMOS -->
+  <section class="alt" id="que-hacemos">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow reveal">Qué hacemos</p>
+          <h2 class="reveal">Transformamos problemas operativos en mejoras concretas</h2>
+        </div>
+      </div>
+      <p class="section-intro reveal">Primero entendemos tu operación. Después vemos qué conviene mejorar, automatizar o digitalizar. No implementamos tecnología porque sí — buscamos que <strong>cada herramienta resuelva un problema concreto</strong> de tu empresa.</p>
+
+      <div class="solution-grid reveal">
+
+        <article class="solution-card">
+          <svg class="solution-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="16" cy="6" r="3"/><circle cx="6" cy="26" r="3"/><circle cx="16" cy="26" r="3"/><circle cx="26" cy="26" r="3"/><path d="M16 9v10M16 19L6 23M16 19l10 4"/></svg>
+          <h3>Ordenamos tu operación</h3>
+          <p class="solution-desc">Definimos cómo tiene que funcionar cada proceso, quién es responsable de qué, y lo dejamos documentado.</p>
+          <p class="solution-includes">Procesos · Roles y responsabilidades · Organigrama · Procedimientos · Estandarización</p>
+        </article>
+
+        <article class="solution-card">
+          <svg class="solution-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 4h20M6 28h20M9 4c0 8 14 8 14 12s-14 4-14 12M23 4c0 8-14 8-14 12s14 4 14 12" /></svg>
+          <h3>Detectamos dónde perdés tiempo y dinero</h3>
+          <p class="solution-desc">Encontramos los cuellos de botella, los costos ocultos y los puntos donde se frena la operación.</p>
+          <p class="solution-includes">Cuellos de botella · Costos por proceso · Carga de trabajo · Puntos críticos</p>
+        </article>
+
+        <article class="solution-card">
+          <svg class="solution-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 26a12 12 0 0 1 24 0"/><line x1="16" y1="26" x2="22" y2="16"/><circle cx="16" cy="26" r="1.6" fill="currentColor" stroke="none"/></svg>
+          <h3>Hacemos que la información trabaje para vos</h3>
+          <p class="solution-desc">Ordenamos los datos que ya tenés y los convertimos en indicadores para decidir con información, no con intuición.</p>
+          <p class="solution-includes">Indicadores de gestión · Tableros · Información centralizada · Automatización</p>
+        </article>
+
+        <article class="solution-card">
+          <svg class="solution-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="6" width="20" height="20"/><polyline points="10,17 14,21 22,11"/></svg>
+          <h3>Implementamos y acompañamos</h3>
+          <p class="solution-desc">Ponemos en marcha las mejoras junto a tu equipo, capacitamos, y seguimos cerca hasta que el cambio se consolida.</p>
+          <p class="solution-includes">Nuevas formas de trabajo · Capacitación · Herramientas · Seguimiento</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
   <!-- CÓMO TRABAJAMOS -->
-  <section class="alt" id="como-trabajamos">
+  <section id="como-trabajamos">
     <div class="wrap">
       <div class="section-head">
         <div>
           <p class="eyebrow reveal">Cómo trabajamos</p>
-          <h2 class="reveal">Te acompañamos, paso a paso</h2>
+          <h2 class="reveal">Cinco pasos, sin vueltas</h2>
         </div>
-        <p class="lede reveal">El objetivo es que trabajes de forma transversal, en bloque, no en compartimentos sueltos.</p>
+        <p class="lede reveal">Para que sepas exactamente qué vas a recibir en cada etapa, y puedas decidir con información real.</p>
       </div>
       <div class="process-row reveal">
         <div class="process-step">
           <span class="process-num"><span class="dot"></span>01</span>
           <h3>Entendemos</h3>
-          <p>Nos metemos en el día a día de tu empresa y hablamos con tu equipo.</p>
+          <p>Conocemos tu operación, hablamos con tu equipo, y entendemos cómo se trabaja en la realidad.</p>
         </div>
         <div class="process-step">
           <span class="process-num"><span class="dot"></span>02</span>
           <h3>Detectamos</h3>
-          <p>Dónde se pierde tiempo, dinero y control.</p>
+          <p>Identificamos pérdidas de tiempo, costos innecesarios, cuellos de botella y riesgos.</p>
         </div>
         <div class="process-step">
           <span class="process-num"><span class="dot"></span>03</span>
-          <h3>Ordenamos</h3>
-          <p>Quién hace qué, cómo fluye la información — y lo documentamos.</p>
+          <h3>Proponemos</h3>
+          <p>Te presentamos mejoras concretas, priorizadas y con su inversión, para que decidas vos.</p>
         </div>
         <div class="process-step">
           <span class="process-num"><span class="dot"></span>04</span>
           <h3>Implementamos</h3>
-          <p>Herramientas simples, no soluciones complicadas.</p>
+          <p>Trabajamos junto a tu equipo para ponerlas en marcha y capacitarlos.</p>
         </div>
         <div class="process-step">
           <span class="process-num"><span class="dot"></span>05</span>
-          <h3>Acompañamos</h3>
-          <p>Seguimos cerca mientras el cambio se consolida.</p>
+          <h3>Medimos</h3>
+          <p>Seguimos los resultados para confirmar que la mejora se sostiene y sigue evolucionando.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- QUÉ HACEMOS -->
-  <section id="que-hacemos">
+  <!-- QUÉ CAMBIA (resultado) -->
+  <section class="alt" id="resultado">
     <div class="wrap">
       <div class="section-head">
         <div>
-          <p class="eyebrow reveal">Qué hacemos</p>
-          <h2 class="reveal">Servicios</h2>
+          <p class="eyebrow reveal">Resultado</p>
+          <h2 class="reveal">¿Qué cambia en tu empresa?</h2>
         </div>
-        <p class="lede reveal">Herramientas concretas para ordenar la operación, no informes que quedan en un cajón.</p>
       </div>
+      <div class="compare-grid reveal">
+        <div class="compare-col compare-col--before">
+          <span class="compare-label mono">Antes</span>
+          <ul class="compare-list">
+            <li><span class="compare-mark" aria-hidden="true"></span>Información dispersa</li>
+            <li><span class="compare-mark" aria-hidden="true"></span>Tareas poco claras</li>
+            <li><span class="compare-mark" aria-hidden="true"></span>Dependencia de personas clave</li>
+            <li><span class="compare-mark" aria-hidden="true"></span>Procesos distintos según quién los haga</li>
+            <li><span class="compare-mark" aria-hidden="true"></span>Problemas que se resuelven sobre la marcha</li>
+            <li><span class="compare-mark" aria-hidden="true"></span>Decisiones basadas en intuición</li>
+          </ul>
+        </div>
+        <div class="compare-col compare-col--after">
+          <span class="compare-label mono">Después</span>
+          <ul class="compare-list">
+            <li><span class="compare-mark" aria-hidden="true"></span>Procesos claros y documentados</li>
+            <li><span class="compare-mark" aria-hidden="true"></span>Roles y responsabilidades definidos</li>
+            <li><span class="compare-mark" aria-hidden="true"></span>Información ordenada y accesible</li>
+            <li><span class="compare-mark" aria-hidden="true"></span>Menos tareas repetitivas</li>
+            <li><span class="compare-mark" aria-hidden="true"></span>Indicadores para saber qué está pasando</li>
+            <li><span class="compare-mark" aria-hidden="true"></span>Decisiones basadas en datos</li>
+            <li><span class="compare-mark" aria-hidden="true"></span>Un equipo más autónomo</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <div class="services-grid reveal">
-
-        <article class="service-card">
-          <svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="14" cy="14" r="8"/><line x1="20" y1="20" x2="27" y2="27"/></svg>
-          <h3>Relevamiento de procesos</h3>
-          <p>Entrevistamos a tu equipo y observamos el trabajo diario para entender cada tarea de principio a fin. Un diagnóstico basado en tu operación real, no en supuestos.</p>
+  <!-- POR QUÉ PRH -->
+  <section id="por-que">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow reveal">Por qué PRH</p>
+          <h2 class="reveal">¿Por qué trabajar con nosotros?</h2>
+        </div>
+      </div>
+      <div class="why-grid reveal">
+        <article class="why-card">
+          <p class="why-no">No venimos a decirte cómo debería funcionar tu empresa desde un escritorio.</p>
+          <p class="why-yes">Primero conocemos cómo funciona de verdad.</p>
         </article>
-
-        <article class="service-card">
-          <svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="6" width="8" height="6"/><rect x="20" y="6" width="8" height="6"/><rect x="12" y="20" width="8" height="6"/><path d="M8 12v4l8 4M24 12v4l-8 4"/></svg>
-          <h3>Mapa de procesos</h3>
-          <p>Te entregamos la estructura de cada proceso graficada con claridad, para que cualquier persona entienda de un vistazo quién hace qué y en qué orden.</p>
+        <article class="why-card">
+          <p class="why-no">No te entregamos un informe para que quede guardado.</p>
+          <p class="why-yes">Trabajamos con tu equipo para implementar las mejoras.</p>
         </article>
-
-        <article class="service-card">
-          <svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="24" height="24"/><line x1="4" y1="12" x2="28" y2="12"/><line x1="4" y1="20" x2="28" y2="20"/><line x1="12" y1="4" x2="12" y2="28"/><line x1="20" y1="4" x2="20" y2="28"/></svg>
-          <h3>Matriz de polivalencia</h3>
-          <p>Identificamos qué tareas dependen de una sola persona, para anticipar qué pasa si falta, se enferma o se va — y cubrir ese riesgo a tiempo.</p>
+        <article class="why-card">
+          <p class="why-no">No recomendamos tecnología porque está de moda.</p>
+          <p class="why-yes">Primero encontramos el problema, después buscamos la herramienta.</p>
         </article>
-
-        <article class="service-card">
-          <svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="16" cy="10" r="5"/><path d="M6 27c0-6 4.5-10 10-10s10 4 10 10"/></svg>
-          <h3>Roles y responsabilidades</h3>
-          <p>Definimos con precisión qué le corresponde a cada puesto, para que ninguna tarea importante quede sin dueño ni se duplique sin que nadie lo sepa.</p>
+        <article class="why-card">
+          <p class="why-no">No buscamos cambiar todo de una.</p>
+          <p class="why-yes">Priorizamos lo que genera más impacto para tu empresa.</p>
         </article>
-
-        <article class="service-card">
-          <svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 4h20M6 28h20M9 4c0 8 14 8 14 12s-14 4-14 12M23 4c0 8-14 8-14 12s14 4 14 12" /></svg>
-          <h3>Cuellos de botella</h3>
-          <p>Señalamos en qué punto del proceso se generan las demoras y por qué, para que sepas dónde intervenir en vez de mejorar al azar.</p>
-        </article>
-
-        <article class="service-card">
-          <svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="16" cy="6" r="3"/><circle cx="6" cy="26" r="3"/><circle cx="16" cy="26" r="3"/><circle cx="26" cy="26" r="3"/><path d="M16 9v10M16 19L6 23M16 19l10 4"/></svg>
-          <h3>Organigrama</h3>
-          <p>Mostramos cómo se relaciona realmente cada persona y área, más allá de lo que figura en el papel, con claridad de mando para organizar el crecimiento del equipo.</p>
-        </article>
-
-        <article class="service-card">
-          <svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="7" y="3" width="18" height="26"/><line x1="11" y1="9" x2="21" y2="9"/><line x1="11" y1="14" x2="21" y2="14"/><line x1="11" y1="19" x2="17" y2="19"/></svg>
-          <h3>Documentación de procedimientos</h3>
-          <p>Dejamos por escrito cómo se hace cada tarea clave, para que el conocimiento quede en la empresa y no en la cabeza de una sola persona.</p>
-        </article>
-
-        <article class="service-card">
-          <svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 26a12 12 0 0 1 24 0"/><line x1="16" y1="26" x2="22" y2="16"/><circle cx="16" cy="26" r="1.6" fill="currentColor" stroke="none"/></svg>
-          <h3>Indicadores de gestión (KPIs)</h3>
-          <p>Te damos números concretos para que sepas si el negocio mejora o empeora mes a mes con datos, no con sensaciones.</p>
-        </article>
-
-        <article class="service-card">
-          <svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="7" y1="28" x2="7" y2="16"/><line x1="16" y1="28" x2="16" y2="8"/><line x1="25" y1="28" x2="25" y2="20"/><line x1="4" y1="28" x2="28" y2="28"/></svg>
-          <h3>Análisis de costos por proceso</h3>
-          <p>Mostramos en qué parte de la operación se gana y en cuál se pierde rentabilidad, para decidir precios y recursos con información real.</p>
-        </article>
-
-        <article class="service-card">
-          <svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="20" width="20" height="5"/><rect x="6" y="13" width="20" height="5"/><rect x="6" y="6" width="20" height="5"/></svg>
-          <h3>Estandarización de tareas</h3>
-          <p>Ordenamos el trabajo para que se haga siempre de la misma forma, sin que la calidad dependa de quién lo haga ese día.</p>
-        </article>
-
-        <article class="service-card">
-          <svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="16" y1="5" x2="16" y2="12"/><line x1="4" y1="12" x2="28" y2="12"/><path d="M4 12l-3 9h9zM28 12l-3 9h9z"/><line x1="10" y1="27" x2="22" y2="27"/></svg>
-          <h3>Balance de carga de trabajo</h3>
-          <p>Mostramos si hay personas o áreas sobrecargadas mientras otras tienen tiempo disponible, para repartir mejor el trabajo y evitar el desgaste del equipo.</p>
-        </article>
-
-        <article class="service-card service-card--cta">
-          <span class="team-role" style="margin-bottom:2px; display:block;">A medida</span>
-          <h3>¿Necesitás algo puntual?</h3>
-          <p>Cada pyme tiene su propio nudo. Contanos el tuyo y armamos el alcance a medida.</p>
-          <a href="#contacto" class="service-cta-link">Conversemos →</a>
-        </article>
-
       </div>
     </div>
   </section>
@@ -837,8 +1003,8 @@
     <div class="wrap contact-shell">
       <div class="contact-copy reveal">
         <p class="eyebrow">Contacto</p>
-        <p class="lede-strong" style="margin-top:12px;">Empecemos por entender tu operación.</p>
-        <p>Contanos un poco de tu empresa y en qué etapa está. Te respondemos para coordinar un primer diagnóstico.</p>
+        <p class="lede-strong" style="margin-top:12px;">¿No sabés por dónde empezar?</p>
+        <p>Empecemos por un diagnóstico. Conversamos con vos, entendemos cómo funciona hoy tu operación, y detectamos dónde puede estar el mayor potencial de mejora. Sin compromiso.</p>
       </div>
       <form class="contact-form reveal" id="contactForm">
         <div class="field">
@@ -862,7 +1028,7 @@
           <input id="f-sitio-web" name="sitio_web" type="text" tabindex="-1" autocomplete="off">
         </div>
         <div class="form-foot">
-          <button type="submit" class="btn" id="formSubmit">Enviar consulta</button>
+          <button type="submit" class="btn" id="formSubmit">Solicitar diagnóstico</button>
           <span class="form-note">Te respondemos a la brevedad.</span>
           <span class="form-status mono" id="formStatus"></span>
         </div>
@@ -876,7 +1042,8 @@
   <div class="wrap footer-row">
     <span class="mono">© <span id="year"></span> PRH Ingeniería — prhingenieria.com</span>
     <div class="footer-links">
-      <a href="#que-hacemos">Servicios</a>
+      <a href="#que-hacemos">Qué hacemos</a>
+      <a href="#como-trabajamos">Cómo trabajamos</a>
       <a href="#contacto">Contacto</a>
     </div>
   </div>
