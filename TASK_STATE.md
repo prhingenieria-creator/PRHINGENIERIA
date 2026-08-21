@@ -26,3 +26,15 @@ Sitio institucional armado, publicado en producción en `prhingenieria.com`, y c
 
 ## Pendiente
 - (resuelto 2026-08-20) Conectar GitHub↔Vercel para auto-deploy en cada push — hecho desde vercel.com/prh/prh-ingenieria/settings/git. Detalle en [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md).
+
+## Reescritura de copy y estructura (2026-08-20/21)
+- A pedido del cliente se reescribió el copy y la arquitectura de toda la página (hero orientado a resultado, "¿te pasa esto?" ampliado, secciones nuevas de costo oculto / para quién es / antes-después / por qué PRH, servicios agrupados en 4 soluciones, pasos de "cómo trabajamos" renombrados). Detalle completo en el historial de commits.
+- Fix de paso: `overflow-x:hidden` también en `<html>` (no alcanzaba con `<body>`) — el menú móvil `position:fixed` seguía agrandando el ancho del documento aunque estuviera fuera de pantalla.
+- 2026-08-21: pedido puntual del cliente — unificar los ítems 2 y 3 de "¿Te pasa esto?" en uno solo: "Hay tareas que dependen exclusivamente de una sola persona. Cuando esa persona no está, el proceso se detiene."
+
+## Trabajo en paralelo desde otra máquina (2026-08-21)
+El cliente está trabajando el mismo repo desde otra compu/sesión de Claude (Mac, ver [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md) sección Git). Esa sesión hizo cambios grandes en paralelo: rediseño con paleta de marca tomada de un pptx (acento ámbar `#F2A93C`, se sacó el modo oscuro automático), y agregó SEO/AI (`llms.txt`, `robots.txt`, `sitemap.xml`, JSON-LD, meta OG/Twitter) incluyendo una **dirección física real** ("España 991, Rosario, Argentina") visible en el footer y en los metadatos.
+- Al pushear el cambio del punto anterior desde esta máquina, `git push` fue rechazado porque el remoto tenía esos commits que esta sesión no tenía localmente.
+- Antes de mezclar, se le preguntó explícitamente al cliente si la dirección física era correcta y si debía quedar publicada (no estaba en ningún contexto previo de esta sesión, y contradecía la decisión anterior de "solo formulario, sin datos visibles"). **Confirmado por el cliente: sí, es correcta, se deja.**
+- Se hizo `git merge origin/main` (sin conflictos, merge automático), se pusheó, y se verificó en producción que conviven correctamente el rediseño de la otra sesión + el fix de esta sesión (7 ítems en la lista, paleta ámbar, dirección en el footer, sin errores de consola, sin overflow horizontal).
+- **A tener en cuenta de acá en adelante:** como hay más de una sesión/máquina tocando el mismo repo, conviene hacer `git pull` antes de empezar a editar en cualquiera de las dos, para minimizar estos cruces.
