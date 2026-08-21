@@ -5,58 +5,56 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PRH Ingeniería</title>
 <meta name="description" content="Ayudamos a pymes a ordenar su operación, reducir pérdidas de tiempo y dinero, y mejorar con procesos, tecnología y automatización. Ingenieros industriales — no una agencia de software.">
+<meta name="robots" content="index, follow">
 <link rel="canonical" href="https://prhingenieria.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PRH Ingeniería">
+<meta property="og:title" content="PRH Ingeniería — Procesos, tecnología y automatización para pymes">
+<meta property="og:description" content="Ayudamos a pymes a ordenar su operación, reducir pérdidas de tiempo y dinero, y mejorar con procesos, tecnología y automatización. Ingenieros industriales — no una agencia de software.">
+<meta property="og:url" content="https://prhingenieria.com/">
+<meta property="og:locale" content="es_AR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PRH Ingeniería — Procesos, tecnología y automatización para pymes">
+<meta name="twitter:description" content="Ayudamos a pymes a ordenar su operación, reducir pérdidas de tiempo y dinero, y mejorar con procesos, tecnología y automatización.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "PRH Ingeniería",
+  "url": "https://prhingenieria.com/",
+  "description": "Consultora de ingeniería industrial que ayuda a pymes a ordenar procesos, detectar pérdidas de tiempo y dinero, y mejorar la operación con tecnología y automatización.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "España 991",
+    "addressLocality": "Rosario",
+    "addressCountry": "AR"
+  },
+  "areaServed": "Argentina",
+  "knowsAbout": ["Procesos industriales", "Organización de empresas", "Automatización", "Transformación digital para pymes", "Mejora continua"]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   /* ---------- Tokens ---------- */
   :root{
-    --ground:#F4F6F8;
+    --ground:#F1F3F5;
     --surface:#FFFFFF;
-    --surface-alt:#E9EEF3;
+    --surface-alt:#E7EBEF;
     --ink:#1C2B3A;
-    --muted:#5C7186;
-    --line:#2C5F8A;
-    --line-soft:#B9CBDA;
-    --accent:#C1432B;
-    --accent-ink:#FFFFFF;
-    --grid-rgb:44,95,138;
-    --grid-alpha:0.07;
-    --focus:#2C5F8A;
+    --muted:#5B6B7D;
+    --line:#1C2B3A;
+    --line-soft:#D7DEE5;
+    --accent:#F2A93C;
+    --accent-ink:#1C2B3A;
+    --grid-rgb:28,43,58;
+    --grid-alpha:0.05;
+    --focus:#1C2B3A;
     --shadow:0 1px 0 rgba(28,43,58,0.06);
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --ground:#0E2337;
-      --surface:#153046;
-      --surface-alt:#1A3A55;
-      --ink:#E7EEF4;
-      --muted:#9FB6C9;
-      --line:#8FC3EA;
-      --line-soft:#33587A;
-      --accent:#FF7A57;
-      --accent-ink:#0E2337;
-      --grid-rgb:143,195,234;
-      --grid-alpha:0.08;
-      --focus:#8FC3EA;
-      --shadow:0 1px 0 rgba(0,0,0,0.35);
-    }
-  }
-  :root[data-theme="dark"]{
-    --ground:#0E2337;
-    --surface:#153046;
-    --surface-alt:#1A3A55;
-    --ink:#E7EEF4;
-    --muted:#9FB6C9;
-    --line:#8FC3EA;
-    --line-soft:#33587A;
-    --accent:#FF7A57;
-    --accent-ink:#0E2337;
-    --grid-rgb:143,195,234;
-    --grid-alpha:0.08;
-    --focus:#8FC3EA;
-    --shadow:0 1px 0 rgba(0,0,0,0.35);
   }
 
   *{box-sizing:border-box;}
@@ -418,65 +416,49 @@
   /* ---------- Solutions ("qué hacemos") ---------- */
   .solution-grid{
     display:grid;
-    grid-template-columns:repeat(2, 1fr);
+    grid-template-columns:repeat(4, 1fr);
     gap:1px;
     background:var(--line-soft);
     border:1px solid var(--line-soft);
   }
-  @media (max-width:780px){ .solution-grid{grid-template-columns:1fr;} }
+  @media (max-width:980px){ .solution-grid{grid-template-columns:repeat(2, 1fr);} }
+  @media (max-width:600px){ .solution-grid{grid-template-columns:1fr;} }
   .solution-card{
     background:var(--surface);
-    padding:36px 32px;
+    padding:32px 26px;
   }
   .solution-icon{
-    width:36px;height:36px;
+    width:32px;height:32px;
     color:var(--line);
   }
   .solution-card h3{
-    font-size:1.2rem;
-    margin-top:18px;
+    font-size:1.08rem;
+    margin-top:16px;
     text-transform:none;
   }
   .solution-desc{
-    margin-top:12px;
+    margin-top:10px;
     color:var(--muted);
-    font-size:0.96rem;
-  }
-  .solution-includes{
-    margin-top:18px;
-    padding-top:16px;
-    border-top:1px solid var(--line-soft);
-    font-family:"IBM Plex Mono", monospace;
-    font-size:0.76rem;
-    letter-spacing:0.01em;
-    color:var(--muted);
-    line-height:1.7;
+    font-size:0.92rem;
   }
 
   /* ---------- Process ---------- */
   .process-row{
     display:grid;
     grid-template-columns:repeat(5, 1fr);
-    gap:0;
-    position:relative;
+    gap:16px;
   }
   @media (max-width:980px){
-    .process-row{grid-template-columns:1fr; }
+    .process-row{grid-template-columns:repeat(2, 1fr);}
+  }
+  @media (max-width:620px){
+    .process-row{grid-template-columns:1fr;}
   }
   .process-step{
-    padding:0 20px 0 0;
-    position:relative;
-  }
-  .process-step:not(:last-child)::after{
-    content:"";
-    position:absolute;
-    top:15px; right:0;
-    width:20px; height:1px;
-    background:var(--line);
-  }
-  @media (max-width:980px){
-    .process-step{padding:0 0 28px 26px; border-left:1.5px solid var(--line-soft); margin-left:9px;}
-    .process-step:not(:last-child)::after{display:none;}
+    border:1.5px solid var(--line-soft);
+    border-radius:20px;
+    padding:28px 22px;
+    background:var(--surface);
   }
   .process-num{
     font-family:"IBM Plex Mono", monospace;
@@ -486,11 +468,11 @@
   }
   .process-num .dot{
     width:8px;height:8px;
-    border:1.5px solid var(--line);
+    border-radius:50%;
+    border:1.5px solid var(--accent);
     background:var(--ground);
     flex:none;
   }
-  @media (max-width:980px){ .process-num .dot{ margin-left:-31px; background:var(--ground);} }
   .process-step h3{
     font-size:1.15rem;
     margin-top:14px;
@@ -537,34 +519,6 @@
   .compare-mark{ flex:none; margin-top:7px; width:7px; height:7px; }
   .compare-col--before .compare-mark{ background:var(--line-soft); }
   .compare-col--after .compare-mark{ background:var(--accent); }
-
-  /* ---------- Why PRH ---------- */
-  .why-grid{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:1px;
-    background:var(--line-soft);
-    border:1px solid var(--line-soft);
-  }
-  @media (max-width:780px){ .why-grid{grid-template-columns:1fr;} }
-  .why-card{
-    background:var(--surface);
-    padding:32px;
-  }
-  .why-no{
-    color:var(--muted);
-    font-size:0.94rem;
-  }
-  .why-yes{
-    margin-top:14px;
-    padding-top:14px;
-    border-top:1.5px solid var(--accent);
-    color:var(--ink);
-    font-weight:600;
-    font-size:1.08rem;
-    font-family:"IBM Plex Sans Condensed", sans-serif;
-    text-transform:none;
-  }
 
   /* ---------- Contact ---------- */
   .contact-shell{
@@ -682,7 +636,6 @@
       <a href="#diagnostico">¿Te pasa esto?</a>
       <a href="#que-hacemos">Qué hacemos</a>
       <a href="#como-trabajamos">Cómo trabajamos</a>
-      <a href="#por-que">Por qué PRH</a>
       <a href="#contacto" class="btn header-cta" style="margin-left:8px;">Solicitar diagnóstico</a>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="primaryNav">
@@ -859,28 +812,24 @@
           <svg class="solution-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="16" cy="6" r="3"/><circle cx="6" cy="26" r="3"/><circle cx="16" cy="26" r="3"/><circle cx="26" cy="26" r="3"/><path d="M16 9v10M16 19L6 23M16 19l10 4"/></svg>
           <h3>Ordenamos tu operación</h3>
           <p class="solution-desc">Definimos cómo tiene que funcionar cada proceso, quién es responsable de qué, y lo dejamos documentado.</p>
-          <p class="solution-includes">Procesos · Roles y responsabilidades · Organigrama · Procedimientos · Estandarización</p>
         </article>
 
         <article class="solution-card">
           <svg class="solution-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 4h20M6 28h20M9 4c0 8 14 8 14 12s-14 4-14 12M23 4c0 8-14 8-14 12s14 4 14 12" /></svg>
           <h3>Detectamos dónde perdés tiempo y dinero</h3>
           <p class="solution-desc">Encontramos los cuellos de botella, los costos ocultos y los puntos donde se frena la operación.</p>
-          <p class="solution-includes">Cuellos de botella · Costos por proceso · Carga de trabajo · Puntos críticos</p>
         </article>
 
         <article class="solution-card">
           <svg class="solution-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 26a12 12 0 0 1 24 0"/><line x1="16" y1="26" x2="22" y2="16"/><circle cx="16" cy="26" r="1.6" fill="currentColor" stroke="none"/></svg>
           <h3>Hacemos que la información trabaje para vos</h3>
           <p class="solution-desc">Ordenamos los datos que ya tenés y los convertimos en indicadores para decidir con información, no con intuición.</p>
-          <p class="solution-includes">Indicadores de gestión · Tableros · Información centralizada · Automatización</p>
         </article>
 
         <article class="solution-card">
           <svg class="solution-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="6" width="20" height="20"/><polyline points="10,17 14,21 22,11"/></svg>
           <h3>Implementamos y acompañamos</h3>
           <p class="solution-desc">Ponemos en marcha las mejoras junto a tu equipo, capacitamos, y seguimos cerca hasta que el cambio se consolida.</p>
-          <p class="solution-includes">Nuevas formas de trabajo · Capacitación · Herramientas · Seguimiento</p>
         </article>
 
       </div>
@@ -941,6 +890,7 @@
           <span class="compare-label mono">Antes</span>
           <ul class="compare-list">
             <li><span class="compare-mark" aria-hidden="true"></span>Información dispersa</li>
+            <li><span class="compare-mark" aria-hidden="true"></span>Tareas repetitivas</li>
             <li><span class="compare-mark" aria-hidden="true"></span>Tareas poco claras</li>
             <li><span class="compare-mark" aria-hidden="true"></span>Dependencia de personas clave</li>
             <li><span class="compare-mark" aria-hidden="true"></span>Procesos distintos según quién los haga</li>
@@ -954,42 +904,12 @@
             <li><span class="compare-mark" aria-hidden="true"></span>Procesos claros y documentados</li>
             <li><span class="compare-mark" aria-hidden="true"></span>Roles y responsabilidades definidos</li>
             <li><span class="compare-mark" aria-hidden="true"></span>Información ordenada y accesible</li>
-            <li><span class="compare-mark" aria-hidden="true"></span>Menos tareas repetitivas</li>
+            <li><span class="compare-mark" aria-hidden="true"></span>Tareas automatizadas</li>
             <li><span class="compare-mark" aria-hidden="true"></span>Indicadores para saber qué está pasando</li>
             <li><span class="compare-mark" aria-hidden="true"></span>Decisiones basadas en datos</li>
             <li><span class="compare-mark" aria-hidden="true"></span>Un equipo más autónomo</li>
           </ul>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- POR QUÉ PRH -->
-  <section id="por-que">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow reveal">Por qué PRH</p>
-          <h2 class="reveal">¿Por qué trabajar con nosotros?</h2>
-        </div>
-      </div>
-      <div class="why-grid reveal">
-        <article class="why-card">
-          <p class="why-no">No venimos a decirte cómo debería funcionar tu empresa desde un escritorio.</p>
-          <p class="why-yes">Primero conocemos cómo funciona de verdad.</p>
-        </article>
-        <article class="why-card">
-          <p class="why-no">No te entregamos un informe para que quede guardado.</p>
-          <p class="why-yes">Trabajamos con tu equipo para implementar las mejoras.</p>
-        </article>
-        <article class="why-card">
-          <p class="why-no">No recomendamos tecnología porque está de moda.</p>
-          <p class="why-yes">Primero encontramos el problema, después buscamos la herramienta.</p>
-        </article>
-        <article class="why-card">
-          <p class="why-no">No buscamos cambiar todo de una.</p>
-          <p class="why-yes">Priorizamos lo que genera más impacto para tu empresa.</p>
-        </article>
       </div>
     </div>
   </section>
@@ -1036,7 +956,7 @@
 
 <footer>
   <div class="wrap footer-row">
-    <span class="mono">© <span id="year"></span> PRH Ingeniería — prhingenieria.com</span>
+    <span class="mono">© <span id="year"></span> PRH Ingeniería — prhingenieria.com · España 991, Rosario, Argentina</span>
     <div class="footer-links">
       <a href="#que-hacemos">Qué hacemos</a>
       <a href="#como-trabajamos">Cómo trabajamos</a>
@@ -1102,7 +1022,7 @@
       .then(function(r){ return r.json().then(function(data){ return {ok: r.ok, data: data}; }); })
       .then(function(res){
         if (res.ok && res.data.ok){
-          formStatusEl.textContent = 'Listo — te vamos a responder por email a la brevedad.';
+          formStatusEl.textContent = 'Gracias por escribirnos. Nos pondremos en contacto en las próximas horas para coordinar el diagnóstico.';
           form.reset();
         } else {
           formStatusEl.textContent = (res.data && res.data.error) || 'No se pudo enviar. Probá de nuevo.';

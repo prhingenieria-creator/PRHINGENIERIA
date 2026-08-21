@@ -28,11 +28,14 @@ El primer deploy (2026-08-20) se hizo sin saber que existía un team separado pa
 ## Git / control de versiones
 Repo: **https://github.com/prhingenieria-creator/PRHINGENIERIA.git** (cuenta GitHub separada, `prhingenieria-creator`, dedicada a PRH — igual que el team de Vercel).
 
-- `gh` en esta máquina también tiene esa cuenta agregada (además de `gerihertner-hue` y `crmverduleria-marta`). La cuenta **activa por default quedó en `prhingenieria-creator`** después de este trabajo (se corrió `gh auth switch --user prhingenieria-creator`) — si se vuelve a trabajar en otro proyecto (Duke Host, CRM Inmobiliario) y hay que pushear ahí, hay que `gh auth switch --user gerihertner-hue` primero, o especificar el usuario con `-u`.
+- `gh` en la máquina Windows original también tiene esa cuenta agregada (además de `gerihertner-hue` y `crmverduleria-marta`). La cuenta **activa por default quedó en `prhingenieria-creator`** después de ese trabajo (se corrió `gh auth switch --user prhingenieria-creator`) — si se vuelve a trabajar en otro proyecto (Duke Host, CRM Inmobiliario) y hay que pushear ahí, hay que `gh auth switch --user gerihertner-hue` primero, o especificar el usuario con `-u`.
 - Primer commit y push (2026-08-20): sitio completo (`index.html`, `PROJECT_CONTEXT.md`, `TASK_STATE.md`, `.gitignore`), rama `main`.
+- **Mac de Maru (2026-08-20):** máquina nueva sin `gh`/`node`/`vercel` instalados. En vez de instalar herramientas, se generó una clave SSH dedicada (`~/.ssh/id_ed25519_prhingenieria`) y se agregó a la cuenta GitHub `prhingenieria-creator` (github.com/settings/keys). El remoto del repo en esta máquina usa SSH (`git@github.com:prhingenieria-creator/PRHINGENIERIA.git`) en vez de HTTPS. Push verificado y funcionando.
 
-### Pendiente — conectar GitHub a Vercel (requiere acción manual del dueño de la cuenta)
-Intenté conectar el repo al proyecto de Vercel vía CLI (`vercel git connect`) para que quede auto-deploy en cada push, pero Vercel exige que la cuenta (`prh.ingenieria@gmail.com`, team `prh`) tenga una "Login Connection" con GitHub — es un OAuth que solo se autoriza desde el dashboard web, no por CLI. Falta que el dueño de la cuenta entre a **vercel.com/prh/prh-ingenieria/settings/git**, logueado con `prh.ingenieria@gmail.com`, y conecte el repo `prhingenieria-creator/PRHINGENIERIA` ahí. Hasta que eso pase, el deploy sigue siendo manual por CLI (`vercel --prod --yes -Q "C:/Users/hertn/.vercel-prh" -S prh`), no automático por push.
+### GitHub↔Vercel conectado (2026-08-20) — auto-deploy activo
+Ya no hace falta deployar a mano por CLI: se conectó el repo desde **vercel.com/prh/prh-ingenieria/settings/git**, logueado con `prh.ingenieria@gmail.com` (instalando la GitHub App de Vercel, con acceso limitado solo al repo `PRHINGENIERIA`). Cada `git push` a `main` dispara un deploy automático a producción. El comando manual (`vercel --prod --yes -S prh`, requiere el CLI de Vercel instalado) queda solo como respaldo si el auto-deploy fallara.
+
+Verificado con un push de prueba (commit de este mismo cambio) que apareció como deployment automático en Vercel sin correr ningún comando de deploy manual.
 
 ## Contacto
 - El sitio **no muestra** email ni teléfono en texto visible (decisión explícita del cliente: "solo formulario, sin datos visibles").
