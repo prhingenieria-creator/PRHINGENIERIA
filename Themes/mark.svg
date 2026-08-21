@@ -1,0 +1,6 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600&amp;display=swap');</style>
+  <rect x="20" y="20" width="160" height="160" fill="none" stroke="#1C2B3A" stroke-width="7"/>
+  <text x="100" y="120" text-anchor="middle" font-family="IBM Plex Mono, 'Courier New', monospace" font-weight="600" font-size="60" letter-spacing="1" fill="#1C2B3A">PRH</text>
+  <line x1="78" y1="140" x2="122" y2="140" stroke="#F2A93C" stroke-width="6"/>
+</svg>

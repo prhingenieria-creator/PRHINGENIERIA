@@ -47,7 +47,19 @@ Verificado con un push de prueba (commit de este mismo cambio) que apareció com
 - Ojo con este nombre de variable si se toca el script de nuevo: **no usar `status` como nombre de variable** en el `<script>` global — pisa en silencio `window.status` (propiedad reservada del navegador) y rompe `.classList`. Por eso la variable se llama `formStatusEl`.
 
 ## Identidad visual
-Concepto "plano técnico / blueprint de ingeniería": paleta ink-blue + acento "redline" (rojo de corrección de plano), tipografía IBM Plex (Sans Condensed para títulos, Sans para cuerpo, Mono para etiquetas técnicas), marcas de registro tipo plano en las esquinas, grilla de papel milimetrado de fondo. Soporta tema claro y oscuro (oscuro = cianotipo, fondo azul con líneas claras).
+Concepto "plano técnico / blueprint de ingeniería": tipografía IBM Plex (Sans Condensed para títulos, Sans para cuerpo, Mono para etiquetas técnicas), marcas de registro tipo plano en las esquinas, grilla de papel milimetrado de fondo. Un solo tema (claro) — el modo oscuro automático se sacó (2026-08-21, sesión Mac).
+
+Paleta vigente (post rediseño con marca del pptx, 2026-08-21):
+- Ink / línea: `#1C2B3A`
+- Acento: `#F2A93C` (ámbar — reemplazó al acento rojo "redline" del concepto original)
+- Muted: `#5B6B7D`
+- Ground: `#F1F3F5`
+- Superficie: `#FFFFFF`
+
+## Branding (logo, LinkedIn, firma de Gmail)
+Recursos de marca (fuera del sitio en sí) en **`Themes/`**: isotipo y logo completo (SVG + PNG), logo y portada para la página de empresa de LinkedIn (300×300 y 1128×191), y una firma de Gmail institucional (HTML para copiar/pegar + logo de respaldo). Todo generado a partir de la misma paleta/tipografía del sitio. Detalle completo, medidas exactas y decisiones de diseño en [Themes/themes.dm](Themes/themes.dm).
+
+Nota técnica: los PNG se generaron rasterizando HTML con Chrome headless. La primera pasada salió con la fuente de reserva (Courier New en vez de IBM Plex Mono) porque el webfont de Google Fonts no llegaba a descargarse antes de la captura — se resolvió embebiendo las fuentes como data URI en el HTML de renderizado en vez de depender de la carga por red.
 
 ## Equipo
 El sitio **no muestra** nombres ni información de las personas del equipo (decisión explícita del cliente, 2026-08-20 — se sacó la sección "Equipo" que originalmente listaba a las 3 personas con nombre y rol). No reintroducir nombres/roles individuales en el sitio salvo pedido explícito.
