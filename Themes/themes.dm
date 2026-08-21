@@ -20,7 +20,8 @@
 |---|---|---|---|
 | `mark.svg` | Isotipo maestro (vector) | viewBox 200×200 | transparente |
 | `lockup.svg` | Logo completo maestro (vector): isotipo + "INGENIERÍA" | viewBox 660×200 | transparente |
-| `mark-512.png` | Isotipo exportado, uso general (avatares, favicons grandes, documentos) | 512×512 | transparente |
+| `mark-512.png` | Isotipo exportado, uso general (favicons grandes, documentos, superposición sobre fondos de color) | 512×512 | transparente |
+| `avatar-1024.png` | Foto de perfil universal (WhatsApp, Gmail, y cualquier app que recorte el avatar en círculo) | 1024×1024 | blanco opaco, con margen generoso para que el recorte circular no corte el borde del isotipo |
 | `lockup-1200.png` | Logo completo exportado, uso general (membrete, presentaciones, firmas grandes) | 1200×364 | transparente |
 | `linkedin-logo-300.png` | Logo de la página de empresa en LinkedIn | 300×300 | blanco opaco (LinkedIn no maneja bien transparencias en el logo de empresa) |
 | `linkedin-cover-1128x191.png` | Portada de la página de empresa en LinkedIn | 1128×191 | ground (#F1F3F5) con grilla de fondo |
