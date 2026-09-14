@@ -62,7 +62,10 @@ Recursos de marca (fuera del sitio en sí) en **`Themes/`**: isotipo y logo comp
 Nota técnica: los PNG se generaron rasterizando HTML con Chrome headless. La primera pasada salió con la fuente de reserva (Courier New en vez de IBM Plex Mono) porque el webfont de Google Fonts no llegaba a descargarse antes de la captura — se resolvió embebiendo las fuentes como data URI en el HTML de renderizado en vez de depender de la carga por red.
 
 ## Equipo
-El sitio **no muestra** nombres ni información de las personas del equipo (decisión explícita del cliente, 2026-08-20 — se sacó la sección "Equipo" que originalmente listaba a las 3 personas con nombre y rol). No reintroducir nombres/roles individuales en el sitio salvo pedido explícito.
+El **sitio web** no muestra nombres ni información de las personas del equipo (decisión explícita del cliente, 2026-08-20 — se sacó la sección "Equipo" que originalmente listaba a las 3 personas con nombre y rol). No reintroducir nombres/roles individuales en el sitio salvo pedido explícito.
+
+**Excepción confirmada (2026-09-14) — materiales PDF sí llevan fotos y nombres.** El cliente pidió explícitamente agregar fotos reales y nombres del equipo en el folleto institucional (a partir de una referencia visual que mandó). Fotos reales guardadas en `fotos/` (`Geraldine Hertner.jpeg`, `Marianela Riz.jpeg`, `Cristian Portesio.jpeg`), usadas en `Themes/folleto-equipo.pdf`. Roles: los tres son "Ingeniero/a Industrial" — no se documentó una descripción de rol distinta por persona para este material (a diferencia de la vieja sección "Equipo" del sitio, que tenía roles distintos: Relevamiento / Operación / Implementación).
+Esta excepción es solo para folletos/PDFs — la decisión de "sin fotos ni nombres" sigue vigente para el sitio web en sí, salvo que el cliente diga lo contrario.
 
 ## Decisiones pendientes de confirmar con el cliente
 - Hosting/despliegue del dominio prhingenieria.com.
